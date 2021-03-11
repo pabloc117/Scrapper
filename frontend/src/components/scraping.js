@@ -22,7 +22,8 @@ export default class Scraping extends React.Component {
     let res = await axios.get(`http://localhost:4040/${this.routeParam}`);
     let { data } = res; 
     // set data
-    this.setState({ amazon: data.amazon, ebay: data.ebay });
+   // this.setState({ amazon: data.amazon, ebay: data.ebay });
+    this.setState({ amazon: data.amazon});
   };
 
   render() {
@@ -55,7 +56,7 @@ export default class Scraping extends React.Component {
             </ul> 
           </div>
 
-          <div class="ebay"> 
+{/*           <div class="ebay"> 
             <ul class="list-group">
                 {this.state.ebay.map(s => (
                   <li class="list-group-item"> 
@@ -71,7 +72,7 @@ export default class Scraping extends React.Component {
                   </li>
                 ))}
             </ul> 
-          </div> 
+          </div>  */}
         </div> 
         )}
       </div> 

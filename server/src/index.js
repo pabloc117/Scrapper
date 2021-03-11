@@ -18,7 +18,8 @@ app.get('/:search', async (req, res) => {
     let search = req.params.search
     // making urls dynamic
     let url_amazon = `https://www.amazon.com/s?k=${search}`
-    let url_ebay = `https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=${search}&_sacat=0`
+    let url_ebay = `https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw=${search}&_sacat=0`
+    
 
     let products_amazon = await amazon(url_amazon)
     let products_ebay = await ebay(url_ebay)
@@ -33,15 +34,18 @@ app.get('/:search', async (req, res) => {
     // processing null data or error
     if (products_amazon === null) {
         products_amazon = [empty]
-    } else if (products_ebay == null) {
-        products_ebay = [empty]
-    }
+    }// else if (products_ebay == null) {
+     //   products_ebay = [empty]
+    //}
     
     // send all scraping data to client
     await res.send({ 
+        amazon: products_amazon
+    })   
+   /*  await res.send({ 
         amazon: products_amazon,
         ebay: products_ebay
-    })   
+     })*/   
 })
 
 

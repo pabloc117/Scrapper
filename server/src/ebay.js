@@ -6,7 +6,10 @@ let ebay = async(url) => {
             // ignore extensions on Windows 10
             ignoreDefaultArgs: ['--disable-extensions'],
             // headless true this means chrome page is not opened but you can do false
-            headless: true 
+            headless: true ,
+            args: ["--disable-setuid-sandbox"],
+            'ignoreHTTPSErrors': true,
+            defaultViewport: null
         })
         // create new page 
         const page = await browser.newPage() 
