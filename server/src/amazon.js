@@ -38,7 +38,7 @@ let amazon = async(url) => {
                         price: item.querySelector('.a-link-normal.a-text-normal > span[class="a-price"] > span[class="a-offscreen"]').textContent.replace(/[Count,/]/g, m => (m === '' ? '' : '')),
                         url: item.querySelector('.a-link-normal.a-text-normal').href,
                         img: item.querySelector('.s-image').src,
-                        rating: item.querySelector(elementArray[text].querySelector('div > span > div > div a > i ')?elementArray[text].querySelector('div > span > div > div a > i').innerText:"")
+                        rating: item.querySelector('.a-icon-alt').innerText
                     }; 
                 } else { 
                     // without price
@@ -47,6 +47,7 @@ let amazon = async(url) => {
                         price: 'price is not given',
                         url: item.querySelector('.a-link-normal.a-text-normal').href,
                         img: item.querySelector('.s-image').src,
+                        rating: item.querySelector('.a-size-medium a-color-base a-text-beside-button a-text-bold').textContent
                         //rating : item.querySelector('.a-section a-spacing-none a-spacing-top-micro').innerText
                     }
                 }
