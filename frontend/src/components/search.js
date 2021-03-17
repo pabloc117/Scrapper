@@ -19,12 +19,12 @@ export default class Scraping extends React.Component {
     render() {
         return (   
             <div id="search"> 
-                <div class="input-group">
+                <div className="input-group">
                     {/* get value from input and when user change search term, also change search_query in the state */}
-                    <input type="text" class="form-control" placeholder="Search" value={this.state.search_query} onChange={this.queryChange} aria-label="Search" aria-describedby="basic-addon2"/>
-                    <div class="input-group-append">
+                    <input type="text" className="form-control" placeholder="Search" value={this.state.search_query} onChange={this.queryChange} aria-label="Search" aria-describedby="basic-addon2"/>
+                    <div className="input-group-append">
                         {/* when clicked, run handleSearch */} 
-                        <button type="button" class="btn btn-secondary btn-sm" onClick={this.handleSearch}>Search</button>
+                        <button type="button" className="btn btn-secondary btn-sm" onClick={this.handleSearch}>Search</button>
                     </div>
                 </div>
             </div>

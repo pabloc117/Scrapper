@@ -31,8 +31,8 @@ export default class Scraping extends React.Component {
       <div>
         {/* Message for user */}
         {this.state.amazon.length === 0 ? ( 
-          <div class="msg"> 
-            <div class="circle"></div>
+          <div className="msg"> 
+            <div className="circle"></div>
             {/* <div>Please wait</div> */}
           </div>
         ) : (
@@ -45,7 +45,7 @@ export default class Scraping extends React.Component {
                   <img src={`${s.img}`} class="rounded float-right" alt="..."/> 
                   <h1 id="amazon_title">Amazon</h1>
                   <h3>{s.name}</h3>
-                  <p>{s.price}</p>
+                  <p>Price: {s.price}</p>
                   <p>Rating: {s.rating}</p>
                   <a id="url" href={`${s.url}`} target="_blank" rel="noopener noreferrer"> 
                   <svg class="bi bi-arrow-right-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
