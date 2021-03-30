@@ -13,11 +13,11 @@
   "author": "tofiqbakhshiyev@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "get-urls": "^9.2.0",
+    "get-urls": "^10.0.0",
     "node-fetch": "^2.6.0",
-    "puppeteer": "^3.3.0"
+    "puppeteer": "^8.0.0"
   }
 }
