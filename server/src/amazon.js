@@ -31,6 +31,8 @@ let amazon = async (url) => {
         /*         const hrefElement = await page.$('.a-declarative');
                 await hrefElement.click(); */
         console.log('Cargo la pagina.');
+        const ProductosArray = new Array()
+        console.log(ProductosArray);
         /* Ciclo para buscar elemento por elemento */
         const items = await page.$$('div[class="sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 AdHolder sg-col sg-col-4-of-20"]');
         /*         console.log(items); */
@@ -39,23 +41,36 @@ let amazon = async (url) => {
                 return document.querySelectorAll('div[class="sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 AdHolder sg-col sg-col-4-of-20"]')[i];
             }, i);
             await delay(3000);
+            //console.log(item);
             const data = await item.evaluate(() => {
                 const tds = Array.from(document.querySelectorAll('.sg-col-inner'))
-                console.log(tds);
+                //console.log(tds);
                 return tds.map(td => td.textContent);
-                
+
             });
             //console.log(data);
             try {
+                const titulo = await item.evaluate(el => el.querySelector('h2').innerText);
+                const url = await item.evaluate(el => el.querySelector('.a-link-normal.a-text-normal').href);
+                const img = await item.evaluate(el =>el.querySelector('.s-image').src);
+                const rating = await item.evaluate(el =>el.querySelector('.a-icon-alt').innerText);
+                console.log('\n',titulo,'\n', url,'\n',img,'\n',rating,'\n');
+            } catch (error) {
+                console.log("Siuuu.", error);
+            }
+            try {
+
                 var Offers = await item.$x("//a[contains(., 'offer')]");
                 await Offers[i].click();
-                var masOpciones = await item.$x("//a[contains(., 'See more')]");
-                await masOpciones[0].click();
-                console.log(masOpciones, "SIUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+                await delay(3000);
+                var masOpciones = await item.$eval("#aod-pinned-offer-show-more-link", el => console.log("elemnet is:", el.innerText));
+                if(masOpciones) masOpciones[0].click();
+                //await masOpciones[0].click();
                 await delay(3000);
 
-                var cerrarBarra =  await item.$x("//a[contains(., 'See more')]", { visible: true });
-                await cerrarBarra[0].click();
+                //var cerrarBarra = await item.$x("//a[contains(., 'See more')]", { visible: true });
+                //await cerrarBarra[0].click();
+                await page.click('#aod-close');
 
             } catch (error) {
                 console.log("The element didn't appear.", error);
@@ -63,7 +78,7 @@ let amazon = async (url) => {
             //console.log(elements);
 
         }
-
+        //console.log(items[0]);
         //console.log(item);
         /*             await item.click();
                     await page.waitForSelector('.');
