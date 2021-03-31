@@ -63,13 +63,13 @@ let amazon = async (url) => {
                 var Offers = await item.$x("//a[contains(., 'offer')]");
                 await Offers[i].click();
                 await delay(3000);
-                var masOpciones = await item.$eval("#aod-pinned-offer-show-more-link", el => console.log("elemnet is:", el.innerText));
-                if(masOpciones) masOpciones[0].click();
+                //var masOpciones = await item.$eval("#aod-pinned-offer-show-more-link", el => console.log("elemnet is:", el.innerText));
                 //await masOpciones[0].click();
                 await delay(3000);
-
+                await page.click('#aod-pinned-offer-show-more-link');
                 //var cerrarBarra = await item.$x("//a[contains(., 'See more')]", { visible: true });
                 //await cerrarBarra[0].click();
+                await delay(1500);
                 await page.click('#aod-close');
 
             } catch (error) {
